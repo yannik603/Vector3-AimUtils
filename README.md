@@ -7,7 +7,7 @@ This repository provides a simple and efficient implementation of a `Vector3` cl
 
 - **Vector Operations**: Addition, subtraction, multiplication, and division of vectors.
 - **Normalization**: Normalize vectors to unit length.
-- ** Angle Normalization**: Normalize angles to their range
+- **Angle Normalization**: Normalize angles to their range
 - **Distance Calculation**: Compute the distance between two vectors.
 - **Angle Calculation**: Calculate yaw and pitch angles between two points for aimbots.
 - **World to Screen Conversion**: Functions to convert 3D coordinates to 2D screen coordinates.
