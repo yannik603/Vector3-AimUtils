@@ -21,13 +21,12 @@ public:
     Vector3& operator -= (const Vector3& rhs) { return *this = *this - rhs; }
     Vector3& operator *= (const float& rhs) { return *this = *this * rhs; }
     Vector3& operator /= (const float& rhs) { return *this = *this / rhs; }
+    bool operator == (const Vector3& rhs) const { return x == rhs.x && y == rhs.y && z == rhs.z; }
     float Length() const { return sqrtf(x * x + y * y + z * z); } //AKA Magnitude
     Vector3 Normalize() const { return *this * (1 / Length()); } // 1/ Length() 
     float Distance(const Vector3& rhs) const { return (*this - rhs).Length(); }
     Vector3& abs() { x = fabs(x); y = fabs(y); z = fabs(z); return *this; }
-    Vector3 NormalizeAngle(); // Wraps around x from 0-360 and y from -90 to 90
-    void NormalizeAngle(Vector3 &angle); // Wraps around x from 0-360 and y from -90 to 90
-
+    void NormalizeAngle(); // Wraps around x from 0-360 and y from -90 to 90
     std::string ToString();
 
 };
@@ -45,8 +44,8 @@ using vec3 = Vector3;
 using Vec = Vector3;
 using vec = Vector3;
 
-bool WorldToScreen(vec3 pos, vec3& screen, float matrix[16], int windowWidth, int windowHeight);
-Vec3 WorldToScreen(Vec3& pos, float matrix[16], int windowWidth, int windowHeight);
+Vec3 OpenGLWorldToScreen(Vec3& pos, const float matrix[16], int windowWidth, int windowHeight);
+Vec3 DirectXWorldToScreen(Vec3& pos, const float matrix[16], int windowWidth, int windowHeight);
 Vec3 CalcAngle(Vec3& origin, Vec3& target);
 
 
