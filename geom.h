@@ -26,7 +26,7 @@ public:
     Vector3 Normalize() const { return *this * (1 / Length()); } // 1/ Length() 
     float Distance(const Vector3& rhs) const { return (*this - rhs).Length(); }
     Vector3& abs() { x = fabs(x); y = fabs(y); z = fabs(z); return *this; }
-    void NormalizeAngle(); // Wraps around x from 0-360 and y from -90 to 90
+    void NormalizeAngle(float yawMin = -90, float yawMax = 90, float pitchMin = 0, float pitchMax = 360);
     std::string ToString();
 
 };
@@ -46,10 +46,9 @@ using vec = Vector3;
 
 Vec3 OpenGLWorldToScreen(Vec3& pos, const float matrix[16], int windowWidth, int windowHeight);
 Vec3 DirectXWorldToScreen(Vec3& pos, const float matrix[16], int windowWidth, int windowHeight);
-Vec3 CalcAngle(Vec3& origin, Vec3& target);
+Vec3 CalcAngle(const Vec3& origin, const Vec3& target, bool invertYaw = false, bool invertPitch = false);
 
-
-Vec3 DegreesToRadians(Vec3& vec);
+Vec3 DegreesToRadians(const Vec3& vec);
 float DegreesToRadians(float num);
 Vec3 RadiansToDegrees(const Vec3& vec);
 float RadiansToDegrees(float num);
